@@ -1,0 +1,88 @@
+{
+  "name": "new-project",
+  "productName": "new-project",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --cache --color --ext .jsx,.js src"
+  },
+  "keywords": [],
+  "author": "michaelmeow",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "npm"
+      },
+      "electronWinstallerConfig": {
+        "name": "new_project"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "newproject"
+      }
+    }
+  },
+  "dependencies": {
+    "electron-compile": "^6.4.4",
+    "electron-devtools-installer": "^2.2.4",
+    "electron-squirrel-startup": "^1.0.0",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5",
+    "react-hot-loader": "^3.1.3",
+    "daggy": "0.0.1",
+    "data.either": "^1.3.0",
+    "data.maybe": "^1.2.1",
+    "moment": "^2.10.6",
+    "pointfree-fantasy": "^0.1.3",
+    "ramda": "^0.19.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-saga": "^0.10.5",
+    "reselect": "^2.5.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^5.2.3",
+    "electron-prebuilt-compile": "4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.12.2",
+    "babel-cli": "^6.3.17",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "http-server": "^0.8.5",
+    "nodemon": "^1.8.1"
+  }
+}
