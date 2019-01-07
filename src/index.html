@@ -8,14 +8,19 @@
 </body>
 
 <script type="text/jsx">
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers/reducer';
 import { Provider } from 'react-redux';
+import { saga } from './sagas';
 
-const store = createStore(reducer);
+const sagaMiddleware = createSagaMiddleware()
+const createStoreWithMiddleware = applyMiddleware(sagaMiddleware)(createStore)
+
+const store = createStoreWithMiddleware(reducer);
 
 const render = () => {
   const App = require('./app').default;
@@ -26,6 +31,8 @@ const render = () => {
     document.getElementById('App')
   );
 };
+
+sagaMiddleware.run(saga);
 
 /*eslint-disable */
 render();

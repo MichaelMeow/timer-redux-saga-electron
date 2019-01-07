@@ -1,9 +1,10 @@
 import React from 'react';
+import Timer from './Timer';
 
 export default class App extends React.Component {
   render() {
     return (<div>
-      <h2>Let's make an electron app with react and redux-saga</h2>
+      <Timer />
     </div>);
   }
 }
