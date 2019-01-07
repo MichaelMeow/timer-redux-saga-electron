@@ -15,7 +15,7 @@ import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducers/reducer';
 import { Provider } from 'react-redux';
-import { saga } from './sagas';
+import { runTimer } from './sagas';
 
 const sagaMiddleware = createSagaMiddleware()
 const createStoreWithMiddleware = applyMiddleware(sagaMiddleware)(createStore)
@@ -32,7 +32,7 @@ const render = () => {
   );
 };
 
-sagaMiddleware.run(saga);
+sagaMiddleware.run(runTimer);
 
 /*eslint-disable */
 render();

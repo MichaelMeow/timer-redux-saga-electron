@@ -6,16 +6,24 @@ export default (
     status: 'Stopped',
     seconds: 0
   }, action) => {
+  const newState = Object.assign(state)
   switch (action.type) {
     case 'START':
-      console.log("change status to running")
-      return state
+      newState.status = 'Running'
+      console.log(newState)
+      return newState
     case 'STOP':
-      return state
+      newState.status = 'Stopped'
+      console.log(newState)
+      return newState
     case 'TICK':
-      return state
+      newState.seconds = state.seconds + 1
+      console.log(newState)
+      return newState
     case 'RESET':
-      return state
+      newState.seconds = 0
+      console.log(newState)
+      return newState
     default:
       return state
   }

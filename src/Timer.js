@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getFormattedTime, getStatus } from './reducers/reducer';
 import PropTypes from 'prop-types';
+import { start, stop, tick, reset } from './actions';
 
 class Timer extends React.Component {
 
@@ -18,17 +19,17 @@ class Timer extends React.Component {
     </p>
     <button
       disabled={this.props.status === 'Running'}
-      onClick={() => this.props.dispatch({ type: 'RESET' })}>
+      onClick={() => this.props.dispatch(reset)}>
       Reset
     </button>
     <button
       disabled={this.props.status === 'Running'}
-      onClick={() => this.props.dispatch({ type: 'START' })}>
+      onClick={() => this.props.dispatch(start)}>
       Start
     </button>
     <button
       disabled={this.props.status === 'Stopped'}
-      onClick={() => this.props.dispatch({ type: 'STOP' })}>
+      onClick={() => this.props.dispatch(stop)}>
       Stop
     </button>
       </div>
@@ -38,7 +39,6 @@ class Timer extends React.Component {
 
 const mapStateToProps = state => {
   return{
-
     time: getFormattedTime(state),
     status: getStatus(state)
   }

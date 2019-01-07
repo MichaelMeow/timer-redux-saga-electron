@@ -1,4 +1,28 @@
+import { actionChannel, call, take, put, race } from 'redux-saga/effects'
+import * as actions from './actions'
 
-export function* saga(){
-  console.log('Hello Sagas!')
+// wait :: Number -> Promise
+const wait = ms => (
+  new Promise(resolve => {
+    setTimeout(() => resolve(), ms)
+  })
+)
+
+export function* runTimer() {
+  const channel = yield actionChannel('START')
+
+  while(yield take(channel)) {
+    while(true) {
+      const winner = yield race({
+        stopped: take('STOP'),
+        tick: call(wait, 1000)
+      })
+
+      if (!winner.stopped) {
+        yield put(actions.tick)
+      } else {
+        break
+      }
+    }
+  }
 }
